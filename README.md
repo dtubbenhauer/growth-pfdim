@@ -84,7 +84,7 @@ Let us go through the code.
 The first part is about comupting $b(n)$ -- **the numbers we what to approximate**.  
 
 ```
-m:=4; //The order
+m:=5; //The order
 G:=DihedralGroup(m); //The dihedral group
 X:=CharacterTable(G);
 M:=X[#X]; //Take the last representation
@@ -108,14 +108,14 @@ It then runs a loop to check the numbers $b(n)$ and outputs them up the fixed n.
 The output in this example is
 
 ```
-[ 1, 4, 4, 16, 16, 64, 64, 256, 256, 1024, 1024, 4096, 4096, 16384, 16384,
-65536, 65536, 262144, 262144, 1048576 ]
+[ 1, 3, 4, 11, 17, 42, 71, 163, 292, 639, 1189, 2522, 4811, 9999, 19388, 39763,
+77929, 158442, 312703, 632171 ]
 ```
 
-Second, the formula for $a(n)$:
+Second, the **asymptotic formula** for $a(n)$:
 
 ```
-m:=6;
+m:=5;
 G:=DihedralGroup(m); //set group: dihedral group of order 2m
 X:=CharacterTable(G);
 V:=X[#X]; //set module
@@ -149,8 +149,7 @@ end if;
 The code computes the action matrix and its eigenspaces and pieces them together as explained above. The output in this case is
 
 ```
-2/3
-0
+3/5
 ```
 
 which are the (at most) two constants in the formula
