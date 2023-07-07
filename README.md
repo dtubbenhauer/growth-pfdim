@@ -84,11 +84,11 @@ Let us go through the code.
 The first part is about comupting $b(n)$ -- **the numbers we what to approximate**.  
 
 ```
-m:=4;
-G:=DihedralGroup(m);
+m:=4; //The order
+G:=DihedralGroup(m); //The dihedral group
 X:=CharacterTable(G);
-M:=X[#X];
-n:=20;
+M:=X[#X]; //Take the last representation
+n:=20; //Mamimal tensor power
 out:=0;
 outlist:=[];
 
@@ -111,6 +111,60 @@ The output in this example is
 [ 1, 4, 4, 16, 16, 64, 64, 256, 256, 1024, 1024, 4096, 4096, 16384, 16384,
 65536, 65536, 262144, 262144, 1048576 ]
 ```
+
+Second, the formula for $a(n)$:
+
+```
+m:=6;
+G:=DihedralGroup(m); //set group: dihedral group of order 2m
+X:=CharacterTable(G);
+V:=X[#X]; //set module
+
+fus:=[[0 : i in [1..#X]] : j in [1..#X]];
+
+for i in [1..#X] do
+for j in [1..#X] do
+fus[j][i]:=InnerProduct(X[i]*V,X[j]); //computes multiplicity of X[j] in X[i]\otimes V
+end for;
+end for;
+
+M:=Matrix(Rationals(),fus); //use a cyclotomic field in order to have every complex eigenvalues
+
+w0:=Eigenspace(M,2).1; //computes the vector w_0 (warning: magma computes the eigenspace of the linear map given by right multiplication by M)
+vv0:=Eigenspace(Transpose(M),2).1;
+v0:=vv0/ScalarProduct(w0,vv0); //computes v_0 with the normalization so that v_0w_0^{T}=1
+
+&+[(Matrix(Rationals(),#X,1,ElementToSequence(v0))*Matrix(Rationals(),1,#X,ElementToSequence(w0)))[i][1] : i in [1..#X]]; //computes w_0^{T}v_0[1]
+
+
+if m mod 2 eq 0 then //if m is even, we have a coefficient in front of (-1)^n
+w1:=Eigenspace(M,-2).1; //computes the vector w_1 (warning: magma computes the eigenspace of the linear map given by right multiplication by M)
+vv1:=Eigenspace(Transpose(M),-2).1;
+v1:=vv1/ScalarProduct(w1,vv1); //computes v_1 with the normalization so that v_1w_1^{T}=1
+
+&+[(Matrix(Rationals(),#X,1,ElementToSequence(v1))*Matrix(Rationals(),1,#X,ElementToSequence(w1)))[i][1] : i in [1..#X]]; //computes w_1^{T}v_1[1]
+end if; 
+```
+
+The code computes the action matrix and its eigenspaces and pieces them together as explained above. The output in this case is
+
+```
+2/3
+0
+```
+
+which are the (at most) two constants in the formula
+
+$$a(n)=
+\begin{cases}
+\frac{m+1}{2m}\cdot 2^{n} & \text{if } m \text{ is odd},
+\\
+\frac{m+2}{2m}\cdot 2^{n} & \text{if } m \text{ is even and }m^{\prime}\text{ is odd},
+\\
+\left(\frac{(m+2)}{2m}\cdot 1+\frac{1}{m}\cdot(-1)^{n}\right)\cdot 2^{n} & \text{if }m\text{ is even and } m^{\prime}\text{ is even}.
+\end{cases}$$
+
+where $m^{\prime}=m/2$, if $m$ is even, and $m^{\prime}=(m-1)/2$, if $m$ is odd.
 
 # The Mathematica code
 
