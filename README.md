@@ -132,17 +132,17 @@ M:=Matrix(Rationals(),fus); //use a cyclotomic field in order to have every comp
 
 w0:=Eigenspace(M,2).1; //computes the vector w_0 (warning: magma computes the eigenspace of the linear map given by right multiplication by M)
 vv0:=Eigenspace(Transpose(M),2).1;
-v0:=vv0/ScalarProduct(w0,vv0); //computes v_0 with the normalization so that v_0w_0^{T}=1
+v0:=vv0/ScalarProduct(w0,vv0); //computes v_0 with the normalization so that w_0^{T}v_0=1
 
-&+[(Matrix(Rationals(),#X,1,ElementToSequence(v0))*Matrix(Rationals(),1,#X,ElementToSequence(w0)))[i][1] : i in [1..#X]]; //computes w_0^{T}v_0[1]
+&+[(Matrix(Rationals(),#X,1,ElementToSequence(v0))*Matrix(Rationals(),1,#X,ElementToSequence(w0)))[i][1] : i in [1..#X]]; //computes v_0w_0^{T}[1]
 
 
 if m mod 2 eq 0 then //if m is even, we have a coefficient in front of (-1)^n
 w1:=Eigenspace(M,-2).1; //computes the vector w_1 (warning: magma computes the eigenspace of the linear map given by right multiplication by M)
 vv1:=Eigenspace(Transpose(M),-2).1;
-v1:=vv1/ScalarProduct(w1,vv1); //computes v_1 with the normalization so that v_1w_1^{T}=1
+v1:=vv1/ScalarProduct(w1,vv1); //computes v_1 with the normalization so that w_1^{T}v_1=1
 
-&+[(Matrix(Rationals(),#X,1,ElementToSequence(v1))*Matrix(Rationals(),1,#X,ElementToSequence(w1)))[i][1] : i in [1..#X]]; //computes w_1^{T}v_1[1]
+&+[(Matrix(Rationals(),#X,1,ElementToSequence(v1))*Matrix(Rationals(),1,#X,ElementToSequence(w1)))[i][1] : i in [1..#X]]; //computes v_1w_1^{T}[1]
 end if; 
 ```
 
