@@ -38,9 +38,9 @@ will call the
 submatrix of it corresponding to the connected component of $1$ 
 also the action matrix and use this below.
 
-Assume (only for the sake of this page - the note does not need that assumption) that the **Perron--Frobenius theorem** holds, that is
+Assume (only for the sake of this page - the note does not need that assumption) that the **Perron-Frobenius theorem** holds, that is
 the action matrix of $c\in R$ has a leading eigenvalue $\lambda_{0}=\mathrm{PFdim}c$ of multiplicity one that we call 
-the **Perron--Frobenius dimension** of $c$. 
+the **Perron-Frobenius dimension** of $c$. 
 Moreover, the action matrix 
 has some period $h\in\mathbb{N}$ such that there are precisely $h-1$ other eigenvalues 
 $\lambda_{i}=\zeta^{i}\mathrm{PFdim}c$, and all of these are of multiplicity one, where 
