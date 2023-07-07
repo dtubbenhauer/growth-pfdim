@@ -72,6 +72,46 @@ The code attached to this page computes the function $a(n)$ for various examples
 
 # The Magma code
 
+The code can, for example, be run in the online calculator of Magma:
+
+<a href="https://magma.maths.usyd.edu.au/calc/">Magma online</a>
+
+The code we collected is about the dihedral group of order $2m$ and can be adjusted to 
+other groups easily.
+
+Let us go through the code. 
+
+The first part is about comupting $b(n)$ -- **the numbers we what to approximate**.  
+
+```
+m:=4;
+G:=DihedralGroup(m);
+X:=CharacterTable(G);
+M:=X[#X];
+n:=20;
+out:=0;
+outlist:=[];
+
+for k in [1..n] do
+for j in [1..#X] do
+out+:=InnerProduct(M^k,X[j]);
+end for;
+outlist:=Append(outlist,out);
+out:=0;
+end for;
+outlist;
+```
+
+which sets up the dihedral group, its character table and takes $M$ to be the last representation in the character table and what will be eventually the output.
+It then runs a loop to check the numbers $b(n)$ and outputs them up the fixed n. 
+
+The output in this example is
+
+```
+[ 1, 4, 4, 16, 16, 64, 64, 256, 256, 1024, 1024, 4096, 4096, 16384, 16384,
+65536, 65536, 262144, 262144, 1048576 ]
+```
+
 # The Mathematica code
 
 The code is hopefully pretty straightforward. All that is happening is that 
