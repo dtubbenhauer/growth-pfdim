@@ -17,7 +17,7 @@ Same goes for any errors related to this page.
 
 # Background
 
-Let $\mathbb{K}=\mathbb{R}_{\geq 0}$, our ground semiring. The slogan is: **Positivity is crucial**.
+Let $\mathbb{K}=\mathbb{R}_{\geq 0}$, our ground semiring. The slogan is: **Nonnegativity is crucial**.
 
 A finite based $\mathbb{K}$-algebra $R=(R,C)$ is an algebra with a fixed basis $C$ such that 
 the structure constants with respect to $C$ are in $\mathbb{K}$.
