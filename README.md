@@ -3,7 +3,7 @@
 I collected a bit of Magma and Mathematica code relevant for the paper *Asymptotics in finite monoidal categories*
 <a href="https://arxiv.org/abs/2307.03044">https://arxiv.org/abs/2307.03044</a> on this page.
 
-The code is in a **odt** file or **.n** file, respectively, that can be downloaded from this site and you can run it with Mathematica.
+The code is in a **.odt** file or **.n** file, respectively, that can be downloaded from this site and you can run it with Mathematica.
 
 An Erratum for the paper *Asymptotics in finite monoidal categories* can be found at the bottom of the page.
 
