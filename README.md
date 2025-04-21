@@ -178,4 +178,4 @@ Let me know if there are any questions!
 
 # Erratum
 
-Empty so far.
+In (1A.2), the sum is not always an algebraic integer. For Grothendieck rings of categories it is (and that is where this came from), but here we are talking about general $\mathbb{R}_+$-rings, where PFdim could be any nonnegative real number, so the result is not always an algebraic integer.
